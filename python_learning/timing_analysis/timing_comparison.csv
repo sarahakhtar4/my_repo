@@ -1,0 +1,4 @@
+path,corner1_slack,corner2_slack,difference,category
+cpu_ctrl/state_reg[2] -> alu_inst/result_reg[15],-0.158,-0.019,0.139,improved_paths
+mem_ctrl/addr_reg[0] -> cache_inst/tag_array_reg[31][7],0.532,0.456,0.07600000000000001,degraded_paths
+pipeline_reg/pc_reg[31] -> decode_inst/instr_reg[31],0.569,0.499,0.06999999999999995,degraded_paths

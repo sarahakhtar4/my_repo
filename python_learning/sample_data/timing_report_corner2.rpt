@@ -1,0 +1,215 @@
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 1
+        -max_paths 5
+Design : cpu_core
+Version: 2023.03
+Date   : Mon Jan 15 14:35:45 2024
+****************************************
+
+Operating Conditions: WORST   Library: tcbn65gplustc
+Wire Load Model Mode: top
+
+  Startpoint: cpu_ctrl/state_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: alu_inst/result_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  cpu_ctrl/state_reg[2]/CK (DFFRX1)        0.00       0.00 r
+  cpu_ctrl/state_reg[2]/Q (DFFRX1)         0.185      0.185 r
+  U245/Y (INVX2)                          0.052      0.237 f
+  U246/Y (NAND2X1)                        0.061      0.298 r
+  U247/Y (NOR2X1)                         0.056      0.354 f
+  U248/Y (AOI21X1)                        0.075      0.429 r
+  U249/Y (INVX1)                          0.049      0.478 f
+  decode_inst/ctrl_out[3] (decoder)        0.000      0.478 f
+  alu_inst/ctrl[3] (alu_32bit)             0.000      0.478 f
+  alu_inst/U125/Y (NAND2X2)               0.052      0.530 r
+  alu_inst/U126/Y (AOI22X1)               0.068      0.598 f
+  alu_inst/U127/Y (OAI21X1)               0.061      0.659 r
+  alu_inst/U128/Y (INVX2)                 0.044      0.703 f
+  alu_inst/add_sub_inst/A[15] (add_sub)    0.000      0.703 f
+  alu_inst/add_sub_inst/U89/Y (XOR2X1)    0.084      0.787 f
+  alu_inst/add_sub_inst/U90/Y (XNOR2X1)   0.099      0.886 r
+  alu_inst/add_sub_inst/sum[15] (add_sub)  0.000      0.886 r
+  alu_inst/result_reg[15]/D (DFFRX1)       0.000      0.886 r
+  data arrival time                                   0.886
+
+  clock clk (rise edge)                    1.000      1.000
+  clock network delay (ideal)              0.000      1.000
+  alu_inst/result_reg[15]/CK (DFFRX1)      0.000      1.000 r
+  library setup time                      -0.095      0.905
+  data required time                                  0.905
+                                                      
+  slack (VIOLATED)                                   -0.019
+
+
+  Startpoint: mem_ctrl/addr_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: cache_inst/tag_array_reg[31][7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  mem_ctrl/addr_reg[0]/CK (DFFRX1)         0.00       0.00 r
+  mem_ctrl/addr_reg[0]/Q (DFFRX1)          0.168      0.168 r
+  U301/Y (BUFX2)                          0.044      0.212 r
+  U302/Y (AND2X1)                         0.064      0.276 r
+  U303/Y (OR2X1)                          0.056      0.332 r
+  addr_decode_inst/addr_in[0] (addr_dec)   0.000      0.332 r
+  addr_decode_inst/U45/Y (INVX1)          0.049      0.381 f
+  addr_decode_inst/U46/Y (NAND3X1)        0.068      0.449 r
+  addr_decode_inst/tag_addr[7] (addr_dec)  0.000      0.449 r
+  cache_inst/tag_addr[7] (cache_mem)       0.000      0.449 r
+  cache_inst/tag_array_reg[31][7]/D (DFFRX1) 0.000   0.449 r
+  data arrival time                                   0.449
+
+  clock clk (rise edge)                    1.000      1.000
+  clock network delay (ideal)              0.000      1.000
+  cache_inst/tag_array_reg[31][7]/CK (DFFRX1) 0.000  1.000 r
+  library setup time                      -0.095      0.905
+  data required time                                  0.905
+                                                      
+  slack (MET)                                         0.456
+
+
+  Startpoint: pipeline_reg/pc_reg[31]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: decode_inst/instr_reg[31]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  pipeline_reg/pc_reg[31]/CK (DFFRX1)      0.00       0.00 r
+  pipeline_reg/pc_reg[31]/Q (DFFRX1)       0.177      0.177 f
+  U401/Y (INVX1)                          0.052      0.229 r
+  U402/Y (BUFX4)                          0.049      0.278 r
+  instr_fetch_inst/pc[31] (fetch_unit)     0.000      0.278 r
+  instr_fetch_inst/U12/Y (AND2X2)         0.056      0.334 r
+  instr_fetch_inst/U13/Y (OR3X1)          0.072      0.406 r
+  instr_fetch_inst/instr[31] (fetch_unit)  0.000      0.406 r
+  decode_inst/instr_in[31] (decode_unit)   0.000      0.406 r
+  decode_inst/instr_reg[31]/D (DFFRX1)     0.000      0.406 r
+  data arrival time                                   0.406
+
+  clock clk (rise edge)                    1.000      1.000
+  clock network delay (ideal)              0.000      1.000
+  decode_inst/instr_reg[31]/CK (DFFRX1)    0.000      1.000 r
+  library setup time                      -0.095      0.905
+  data required time                                  0.905
+                                                      
+  slack (MET)                                         0.499
+
+
+  Startpoint: regfile_inst/reg_array[5][15]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: alu_inst/mult_reg[31]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  regfile_inst/reg_array[5][15]/CK (DFFRX1) 0.00      0.00 r
+  regfile_inst/reg_array[5][15]/Q (DFFRX1) 0.172      0.172 f
+  regfile_inst/U234/Y (INVX1)             0.048      0.220 r
+  regfile_inst/U235/Y (NAND2X2)           0.045      0.265 f
+  regfile_inst/read_data_b[15] (regfile)   0.000      0.265 f
+  alu_inst/operand_b[15] (alu_32bit)       0.000      0.265 f
+  alu_inst/mult_inst/B[15] (multiplier)    0.000      0.265 f
+  alu_inst/mult_inst/U567/Y (INVX2)       0.042      0.307 r
+  alu_inst/mult_inst/U568/Y (NAND2X1)     0.058      0.365 f
+  alu_inst/mult_inst/U569/Y (AOI22X1)     0.074      0.439 r
+  alu_inst/mult_inst/U570/Y (OAI21X2)     0.051      0.490 f
+  alu_inst/mult_inst/U571/Y (XOR2X1)      0.068      0.558 r
+  alu_inst/mult_inst/U572/Y (AND2X1)      0.052      0.610 r
+  alu_inst/mult_inst/U573/Y (OR2X2)       0.045      0.655 r
+  alu_inst/mult_inst/U574/Y (XOR2X1)      0.075      0.730 f
+  alu_inst/mult_inst/U575/Y (XNOR2X1)     0.088      0.818 r
+  alu_inst/mult_inst/product[31] (multiplier) 0.000   0.818 r
+  alu_inst/mult_reg[31]/D (DFFRX1)         0.000      0.818 r
+  data arrival time                                   0.818
+
+  clock clk (rise edge)                    1.000      1.000
+  clock network delay (ideal)              0.000      1.000
+  alu_inst/mult_reg[31]/CK (DFFRX1)        0.000      1.000 r
+  library setup time                      -0.095      0.905
+  data required time                                  0.905
+                                                      
+  slack (MET)                                         0.087
+
+
+  Startpoint: branch_pred/history_reg[7]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: cpu_ctrl/next_state_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  branch_pred/history_reg[7]/CK (DFFRX1)   0.00       0.00 r
+  branch_pred/history_reg[7]/Q (DFFRX1)    0.181      0.181 r
+  branch_pred/U89/Y (INVX1)               0.051      0.232 f
+  branch_pred/U90/Y (NAND4X1)             0.075      0.307 r
+  branch_pred/U91/Y (NOR3X1)              0.063      0.370 f
+  branch_pred/U92/Y (AOI21X1)             0.068      0.438 r
+  branch_pred/U93/Y (INVX2)               0.042      0.480 f
+  branch_pred/prediction (branch_predictor) 0.000     0.480 f
+  cpu_ctrl/branch_pred_in (control_unit)   0.000      0.480 f
+  cpu_ctrl/U178/Y (INVX1)                 0.045      0.525 r
+  cpu_ctrl/U179/Y (AND3X1)                0.063      0.588 r
+  cpu_ctrl/U180/Y (OR2X1)                 0.048      0.636 r
+  cpu_ctrl/U181/Y (XOR2X1)                0.072      0.708 f
+  cpu_ctrl/U182/Y (NAND2X1)               0.058      0.766 r
+  cpu_ctrl/U183/Y (INVX1)                 0.044      0.810 f
+  cpu_ctrl/next_state_reg[1]/D (DFFRX1)    0.000      0.810 f
+  data arrival time                                   0.810
+
+  clock clk (rise edge)                    1.000      1.000
+  clock network delay (ideal)              0.000      1.000
+  cpu_ctrl/next_state_reg[1]/CK (DFFRX1)   0.000      1.000 r
+  library setup time                      -0.095      0.905
+  data required time                                  0.905
+                                                      
+  slack (MET)                                         0.095
+
+****************************************
+Summary Report
+****************************************
+
+Total paths analyzed: 5
+Setup violations: 1
+Hold violations: 0
+
+Worst setup slack: -0.019 ns (VIOLATED)
+Best setup slack: 0.499 ns
+
+Critical path count by endpoint:
+  alu_inst/result_reg[15]: 1 (VIOLATED)
+  cache_inst/tag_array_reg[31][7]: 1 (MET)
+  decode_inst/instr_reg[31]: 1 (MET)
+  alu_inst/mult_reg[31]: 1 (MET)
+  cpu_ctrl/next_state_reg[1]: 1 (MET)
+
+****************************************
