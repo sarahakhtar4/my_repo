@@ -1,0 +1,135 @@
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 1
+        -max_paths 5
+Design : cpu_core
+Version: 2023.03
+Date   : Mon Jan 15 14:30:22 2024
+****************************************
+
+Operating Conditions: TYPICAL   Library: tcbn65gplustc
+Wire Load Model Mode: top
+
+  Startpoint: cpu_ctrl/state_reg[2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: alu_inst/result_reg[15]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  cpu_ctrl/state_reg[2]/CK (DFFRX1)        0.00       0.00 r
+  cpu_ctrl/state_reg[2]/Q (DFFRX1)         0.158      0.158 r
+  U245/Y (INVX2)                          0.045      0.203 f
+  U246/Y (NAND2X1)                        0.052      0.255 r
+  U247/Y (NOR2X1)                         0.048      0.303 f
+  U248/Y (AOI21X1)                        0.065      0.368 r
+  U249/Y (INVX1)                          0.042      0.410 f
+  decode_inst/ctrl_out[3] (decoder)        0.000      0.410 f
+  alu_inst/ctrl[3] (alu_32bit)             0.000      0.410 f
+  alu_inst/U125/Y (NAND2X2)               0.045      0.455 r
+  alu_inst/U126/Y (AOI22X1)               0.058      0.513 f
+  alu_inst/U127/Y (OAI21X1)               0.052      0.565 r
+  alu_inst/U128/Y (INVX2)                 0.038      0.603 f
+  alu_inst/add_sub_inst/A[15] (add_sub)    0.000      0.603 f
+  alu_inst/add_sub_inst/U89/Y (XOR2X1)    0.072      0.675 f
+  alu_inst/add_sub_inst/U90/Y (XNOR2X1)   0.085      0.760 r
+  alu_inst/add_sub_inst/sum[15] (add_sub)  0.000      0.760 r
+  alu_inst/result_reg[15]/D (DFFRX1)       0.000      0.760 r
+  data arrival time                                   0.760
+
+  clock clk (rise edge)                    1.000      1.000
+  clock network delay (ideal)              0.000      1.000
+  alu_inst/result_reg[15]/CK (DFFRX1)      0.000      1.000 r
+  library setup time                      -0.082      0.918
+  data required time                                  0.918
+                                                      
+  slack (VIOLATED)                                   -0.158
+
+
+  Startpoint: mem_ctrl/addr_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: cache_inst/tag_array_reg[31][7]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  mem_ctrl/addr_reg[0]/CK (DFFRX1)         0.00       0.00 r
+  mem_ctrl/addr_reg[0]/Q (DFFRX1)          0.145      0.145 r
+  U301/Y (BUFX2)                          0.038      0.183 r
+  U302/Y (AND2X1)                         0.055      0.238 r
+  U303/Y (OR2X1)                          0.048      0.286 r
+  addr_decode_inst/addr_in[0] (addr_dec)   0.000      0.286 r
+  addr_decode_inst/U45/Y (INVX1)          0.042      0.328 f
+  addr_decode_inst/U46/Y (NAND3X1)        0.058      0.386 r
+  addr_decode_inst/tag_addr[7] (addr_dec)  0.000      0.386 r
+  cache_inst/tag_addr[7] (cache_mem)       0.000      0.386 r
+  cache_inst/tag_array_reg[31][7]/D (DFFRX1) 0.000   0.386 r
+  data arrival time                                   0.386
+
+  clock clk (rise edge)                    1.000      1.000
+  clock network delay (ideal)              0.000      1.000
+  cache_inst/tag_array_reg[31][7]/CK (DFFRX1) 0.000  1.000 r
+  library setup time                      -0.082      0.918
+  data required time                                  0.918
+                                                      
+  slack (MET)                                         0.532
+
+
+  Startpoint: pipeline_reg/pc_reg[31]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: decode_inst/instr_reg[31]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  pipeline_reg/pc_reg[31]/CK (DFFRX1)      0.00       0.00 r
+  pipeline_reg/pc_reg[31]/Q (DFFRX1)       0.152      0.152 f
+  U401/Y (INVX1)                          0.045      0.197 r
+  U402/Y (BUFX4)                          0.042      0.239 r
+  instr_fetch_inst/pc[31] (fetch_unit)     0.000      0.239 r
+  instr_fetch_inst/U12/Y (AND2X2)         0.048      0.287 r
+  instr_fetch_inst/U13/Y (OR3X1)          0.062      0.349 r
+  instr_fetch_inst/instr[31] (fetch_unit)  0.000      0.349 r
+  decode_inst/instr_in[31] (decode_unit)   0.000      0.349 r
+  decode_inst/instr_reg[31]/D (DFFRX1)     0.000      0.349 r
+  data arrival time                                   0.349
+
+  clock clk (rise edge)                    1.000      1.000
+  clock network delay (ideal)              0.000      1.000
+  decode_inst/instr_reg[31]/CK (DFFRX1)    0.000      1.000 r
+  library setup time                      -0.082      0.918
+  data required time                                  0.918
+                                                      
+  slack (MET)                                         0.569
+
+****************************************
+Summary Report
+****************************************
+
+Total paths analyzed: 3
+Setup violations: 1
+Hold violations: 0
+
+Worst setup slack: -0.158 ns (VIOLATED)
+Best setup slack: 0.569 ns
+
+Critical path count by endpoint:
+  alu_inst/result_reg[15]: 1 (VIOLATED)
+  cache_inst/tag_array_reg[31][7]: 1 (MET)
+  decode_inst/instr_reg[31]: 1 (MET)
+
+****************************************

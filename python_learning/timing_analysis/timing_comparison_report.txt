@@ -1,0 +1,32 @@
+================================================================================
+TIMING COMPARISON REPORT
+TYPICAL vs WORST
+================================================================================
+
+SUMMARY:
+  Total common paths analyzed: 3
+  Improved paths: 1
+  Degraded paths: 2
+  New violations: 0
+  Fixed violations: 0
+
+⚠️  MOST DEGRADED PATHS (Top 10):
+----------------------------------------
+  mem_ctrl/addr_reg[0] -> cache_inst/tag_array_reg[31][7]
+    TYPICAL: +0.532ns
+    WORST: +0.456ns
+    Degradation: 0.076ns
+
+  pipeline_reg/pc_reg[31] -> decode_inst/instr_reg[31]
+    TYPICAL: +0.569ns
+    WORST: +0.499ns
+    Degradation: 0.070ns
+
+📈 MOST IMPROVED PATHS (Top 5):
+----------------------------------------
+  cpu_ctrl/state_reg[2] -> alu_inst/result_reg[15]
+    TYPICAL: -0.158ns
+    WORST: -0.019ns
+    Improvement: 0.139ns
+
+================================================================================
